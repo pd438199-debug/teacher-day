@@ -1,0 +1,338 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teacher's Day Certificate</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #111;
+    color: #00ff66;
+    font-family: "Courier New", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.screen {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.box {
+    border: 2px solid #00ff66;
+    padding: 35px 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,255,102,0.25);
+}
+
+h1 {
+    color: #ffd700;
+    font-size: 28px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+button {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 15px auto;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: white;
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+    color: #00ff66;
+}
+
+.certificate {
+    background: #f5f0df;
+    color: #222;
+    border: 12px double #222;
+    padding: 45px 30px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+.certificate h1 {
+    color: #222;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.certificate h3 {
+    font-size: 20px;
+}
+
+.funny-list {
+    text-align: left;
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.signature {
+    margin-top: 30px;
+    font-family: cursive;
+    font-size: 20px;
+}
+
+.small {
+    font-size: 13px;
+    color: #555;
+}
+
+hr {
+    margin: 30px 0;
+}
+
+@media print {
+
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    .certificate,
+    .certificate * {
+        visibility: visible;
+    }
+
+    .certificate {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .print-btn {
+        display: none !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+
+<!-- ========================= -->
+<!-- INITIAL QUESTION SCREEN -->
+<!-- ========================= -->
+
+<div id="gate" class="screen active">
+
+    <div class="box">
+
+        <h1>🔒 ACCESS VERIFICATION 🔒</h1>
+
+        <p>
+            Before the Teacher's Day Certificate
+            can be unlocked...
+        </p>
+
+        <p>
+            You must answer ONE very important question.
+        </p>
+
+        <p style="color:white; font-size:19px; font-weight:bold;">
+
+            Do you agree that your pretty little sister
+            is THE BEST in the entire universe?
+
+        </p>
+
+        <button onclick="yesClicked()">
+            YES, OBVIOUSLY 😌
+        </button>
+
+        <button onclick="noClicked()">
+            NO 😑
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- ACCESS GRANTED SCREEN -->
+<!-- ========================= -->
+
+<div id="access" class="screen">
+
+    <div class="box">
+
+        <h1>✅ ACCESS GRANTED</h1>
+
+        <p>
+            Correct answer detected.
+        </p>
+
+        <p>
+            You may now access your Teacher's Day certificate.
+        </p>
+
+        <button onclick="openCertificate()">
+            OPEN CERTIFICATE 🏆
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- CERTIFICATE -->
+<!-- ========================= -->
+
+<div id="certificateScreen" class="screen">
+
+    <div class="certificate">
+
+        <h1>🎓 HAPPY TEACHER'S DAY 🎓</h1>
+
+        <p>
+            Congratulations on surviving:
+        </p>
+
+        <div class="funny-list">
+
+            ✓ Students<br>
+
+            ✓ Their parents<br>
+
+            ✓ And most importantly... <strong>ME</strong> 😌
+
+        </div>
+
+        <hr>
+
+        <h3>💭 Bonus Thought</h3>
+
+        <p>
+            <strong>
+                "Behind every great teacher is a sibling
+                who does all the Excel work."
+            </strong>
+        </p>
+
+        <p>
+            Btw, no need for a thank you...<br>
+            <strong>you can just send me ₹1,000 😁</strong>
+        </p>
+
+        <div class="signature">
+            The Pretty Little Sister™
+        </div>
+
+        <p class="small">
+            Teacher's Day 2026
+        </p>
+
+        <button
+            class="print-btn"
+            onclick="window.print()">
+            🖨️ SAVE / PRINT CERTIFICATE
+        </button>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<script>
+
+function hideEverything() {
+
+    document.getElementById("gate")
+        .classList.remove("active");
+
+    document.getElementById("access")
+        .classList.remove("active");
+
+    document.getElementById("certificateScreen")
+        .classList.remove("active");
+}
+
+
+function yesClicked() {
+
+    hideEverything();
+
+    document.getElementById("access")
+        .classList.add("active");
+}
+
+
+function noClicked() {
+
+    alert(
+        "ACCESS DENIED ❌\n\n" +
+        "Wrong answer.\n\n" +
+        "Please reconsider your answer and try again. 😑"
+    );
+
+}
+
+
+function openCertificate() {
+
+    hideEverything();
+
+    document.getElementById("certificateScreen")
+        .classList.add("active");
+
+}
+
+</script>
+
+</body>
+</html>
+```
